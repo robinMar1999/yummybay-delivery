@@ -1,0 +1,12 @@
+.Navbar {
+  height: 72px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: beige;
+}
+
+.Navbar button {
+  height: fit-content;
+}
