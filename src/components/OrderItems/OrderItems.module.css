@@ -1,0 +1,15 @@
+.OrderItems {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Button {
+  padding: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Button:disabled {
+  cursor: not-allowed;
+}

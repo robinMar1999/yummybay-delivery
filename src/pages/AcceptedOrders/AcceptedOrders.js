@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import OrderItems from "../../components/OrderItems/OrderItems";
 import classes from "./AcceptedOrders.module.css";
 const AcceptedOrders = (props) => {
   const [orders, setOrders] = useState([]);
@@ -14,6 +15,29 @@ const AcceptedOrders = (props) => {
     // };
   }, []);
 
+  useEffect(() => {
+    if (props.socket) {
+      props.socket.on("order-handed", (order) => {
+        console.log(order);
+        updateOrder(order);
+      });
+    }
+  }, [props.socket]);
+
+  const updateOrder = (updatedOrder) => {
+    setOrders((prevOrders) => {
+      const newOrders = [];
+      for (let order of prevOrders) {
+        if (order._id === updatedOrder._id) {
+          newOrders.push(updatedOrder);
+        } else {
+          newOrders.push(order);
+        }
+      }
+      return newOrders;
+    });
+  };
+
   const getAcceptedOrders = () => {
     axios({
       method: "get",
@@ -22,7 +46,7 @@ const AcceptedOrders = (props) => {
         Authorization: props.token,
       },
     }).then((res) => {
-      console.log(res);
+      console.log(res.data);
       setOrders(res.data.orders);
     });
   };
@@ -65,11 +89,6 @@ const AcceptedOrders = (props) => {
       </div>
     );
   });
-  return (
-    <div className={classes.AcceptedOrders}>
-      <h1>Accepted Orders</h1>
-      <div className={classes.orders}>{ordersList}</div>
-    </div>
-  );
+  return <OrderItems orders={orders} onClick={deliverOrderHandler} />;
 };
 export default AcceptedOrders;

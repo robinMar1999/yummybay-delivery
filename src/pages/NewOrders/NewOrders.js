@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import classes from "./NewOrders.module.css";
+import OrderItems from "../../components/OrderItems/OrderItems";
 
 const NewOrders = (props) => {
   const [orders, setOrders] = useState([]);
@@ -17,6 +18,47 @@ const NewOrders = (props) => {
       setOrders(res.data.orders);
     });
   }, []);
+
+  useEffect(() => {
+    if (props.socket) {
+      props.socket.on("new-order", (order) => {
+        console.log("Adding New Order...");
+        addNewOrder(order);
+      });
+      props.socket.on("order-aquired", (order) => {
+        console.log(order);
+        removeOrder(order);
+      });
+    }
+  }, [props.socket]);
+
+  const addNewOrder = (order) => {
+    setOrders((prevOrders) => {
+      let orderFound = false;
+      for (let o of prevOrders) {
+        if (o._id === order.id) {
+          orderFound = true;
+        }
+      }
+      if (orderFound) {
+        return prevOrders;
+      } else {
+        return [...prevOrders, order];
+      }
+    });
+  };
+
+  const removeOrder = (removedOrder) => {
+    setOrders((prevOrders) => {
+      const newOrders = [];
+      for (let order of prevOrders) {
+        if (order._id !== removedOrder._id) {
+          newOrders.push(order);
+        }
+      }
+      return newOrders;
+    });
+  };
 
   const getOrderHandler = (orderId) => {
     axios({
@@ -48,11 +90,6 @@ const NewOrders = (props) => {
       </div>
     );
   });
-  return (
-    <div className={classes.NewOrders}>
-      <h1>New Orders</h1>
-      <div className={classes.orders}>{ordersList}</div>
-    </div>
-  );
+  return <OrderItems orders={orders} onClick={getOrderHandler} />;
 };
 export default NewOrders;

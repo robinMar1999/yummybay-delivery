@@ -4,9 +4,37 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: beige;
+  background-color: #e3e8a1;
 }
 
 .Navbar button {
-  height: fit-content;
+  height: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  width: 10%;
+  background-color: rgb(183, 76, 76);
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.Navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+a.Active {
+  background-color: rgb(160, 156, 21);
+  color: white;
 }

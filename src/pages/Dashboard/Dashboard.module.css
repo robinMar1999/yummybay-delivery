@@ -1,3 +1,38 @@
-.Dashboard{
-  
+.Dashboard {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.Dashboard h1 {
+  text-align: center;
+}
+
+.Container {
+  margin: 16px auto;
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.Links {
+  width: 100%;
+  display: flex;
+}
+
+.Links a {
+  padding: 16px;
+  background-color: rgb(237, 237, 237);
+  text-decoration: none;
+  color: black;
+  margin: 0 16px;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+a.Active,
+.Links a:hover {
+  background-color: black;
+  color: white;
 }

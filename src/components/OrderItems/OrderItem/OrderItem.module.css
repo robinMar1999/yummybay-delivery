@@ -1,0 +1,109 @@
+.OrderItem {
+  width: 100%;
+  height: 200px;
+  border: 1px solid black;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.OrderItem a {
+  display: block;
+  border: 1px solid rgb(196, 196, 196);
+  text-decoration: none;
+  color: black;
+  width: 200px;
+  padding: 8px;
+  margin: 8px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.OrderItem a:hover {
+  background-color: black;
+  color: white;
+}
+
+.OrderId {
+  margin: 8px;
+  font-size: 12px;
+  padding: 0 8px;
+  border: 1px solid rgb(228, 228, 228);
+  width: fit-content;
+  font-weight: bold;
+  background-color: rgb(244, 244, 244);
+}
+
+.OrderDetails {
+  margin: 8px;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid rgb(204, 204, 204);
+}
+
+.Buttons {
+  height: 100%;
+  width: 50%;
+}
+
+.Dishes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Dish {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 16px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 16px auto;
+}
+
+.Count {
+  font-weight: bold;
+}
+
+.X {
+  font-size: 14px;
+}
+
+.DishDetail {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.DishName {
+  font-weight: bold;
+}
+
+.DishImage {
+  height: 64px;
+}
+
+.DishImage img {
+  height: 100%;
+}
+
+.DishPrice {
+  font-weight: bold;
+}
+
+.DishTotal {
+  font-weight: bold;
+}
+
+.TotalPrice {
+  font-weight: bold;
+  font-size: 20px;
+}

@@ -60,8 +60,8 @@ const Login = (props) => {
         clearInterval(interval);
         setIsVerified(true);
         setMsg("Phone number verified successfully");
-        props.setToken(res.data.token);
-        navigate("/", { replace: true });
+        props.login(res.data.token, res.data.isProfileAdded);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
